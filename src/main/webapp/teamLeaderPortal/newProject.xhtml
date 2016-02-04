@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/templates/secureTemplate.xhtml">
+
+            <ui:define name="title">
+                Create a Project
+            </ui:define>
+
+            <ui:define name="content">
+
+                <h:form>
+                    <h:panelGroup layout="block" class="form-group">
+                        <h:outputLabel for="projectNumber" value="Project Number"/>
+                        <h:inputText class="form-control" id="projectNumber" value="#{projectController.project.projectNumber}"/>
+                        <h:message for="projectNumber" style="color: red"/>
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" class="form-group">
+                        <h:outputLabel for="projectName" value="Project Name"/>
+                        <h:inputText class="form-control" id="projectName" value="#{projectController.project.projectName}"/>
+                        <h:message for="projectName" style="color: red"/>
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" class="form-group">
+                        <h:outputLabel for="customer" value="Company"/>
+                        <h:inputText class="form-control" id="customer" value="#{projectController.project.customer}"/>
+                        <h:message for="customer" style="color: red"/>
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" class="form-group">
+                        <h:outputLabel for="projStartDate" value="Date Requested"/>
+                        <h:inputText class="form-control" id="projStartDate" value="#{projectController.project.projStartDate}">
+
+                        </h:inputText>
+                        <h:message for="projStartDate" style="color: red"/>
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" class="form-group">
+                        <h:outputLabel for="projectDescription" value="Description"/>
+                        <h:inputTextarea rows="3" cols="10" class="form-control" id="projectDescription" value="#{projectController.project.projectDescription}"/>
+                        <h:message for="customer" style="color: red"/>
+                    </h:panelGroup>
+                    <h:commandButton action="#{projectController.executeCreateProject()}" value="Create"/>
+                </h:form>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

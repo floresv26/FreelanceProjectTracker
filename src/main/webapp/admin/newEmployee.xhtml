@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../WEB-INF/templates/secureTemplate.xhtml"
+                xmlns:ezcomp="http://xmlns.jcp.org/jsf/composite/ezcomp"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">
+        Enter employee information
+    </ui:define>
+
+    <ui:define name="content">
+
+        <h:form>
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="empFirstName" value="First Name"/>
+                <h:inputText class="form-control" id="empFirstName" value="#{employeesController.employee.empFirstName}"/>
+                <h:message for="empFirstName" style="color: red"/>
+            </h:panelGroup>
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="empLastName" value="Last Name"/>
+                <h:inputText class="form-control" id="empLastName" value="#{employeesController.employee.empLastName}"/>
+                <h:message for="empLastName" style="color: red"/>
+            </h:panelGroup>
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="empSSNumber" value="Social Security"/>
+                <h:inputText class="form-control" id="empSSNumber" value="#{employeesController.employee.empSSNumber}"/>
+                <h:message for="empSSNumber" style="color: red"/>
+            </h:panelGroup>
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="empPhone" value="Phone"/>
+                <h:inputText class="form-control" id="empPhone" value="#{employeesController.employee.empPhone}"/>
+                <h:message for="empPhone" style="color: red"/>
+            </h:panelGroup>
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="empSalary" value="Salary"/>
+                <h:inputText class="form-control" id="empSalary" value="#{employeesController.employee.empSalary}">
+                </h:inputText>
+                <h:message for="empSalary" style="color: red"/>
+            </h:panelGroup>
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="empBirthDate" value="Birth Date"/>
+                <h:inputText class="form-control" id="empBirthDate" value="#{employeesController.employee.empBirthDate}">
+                    <f:convertDateTime type="date" dateStyle="short"/>
+                </h:inputText>
+                <h:message for="empBirthDate" style="color: red"/>
+            </h:panelGroup>
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="employmentStartDate" value="Employment Start Date"/>
+                <h:inputText class="form-control" id="employmentStartDate" value="#{employeesController.employee.employementStartDate}">
+                    <f:convertDateTime type="date" dateStyle="short"/>
+                </h:inputText>
+                <h:message for="employmentStartDate" style="color: red"/>
+            </h:panelGroup>
+            <!--<h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="addresses" value="Address"/><br/>
+                <h:outputLabel for="street1" value="Street1"/>
+                <h:inputText class="form-control" id="street1" value="#{addressController.address.street1}"/>
+                <h:message for="street1" style="color: red"/>
+                <h:outputLabel for="street2" value="Street2"/>
+                <h:inputText class="form-control" id="street2" value="#{addressController.address.street2}"/>
+                <h:message for="street2" style="color: red"/>
+                <h:outputLabel for="city" value="City"/>
+                <h:inputText class="form-control" id="city" value="#{addressController.address.city}"/>
+                <h:message for="city" style="color: red"/>
+                <h:outputLabel for="addState" value="State"/>
+                <h:inputText class="form-control" id="addState" value="#{addressController.address.addState}"/>
+                <h:message for="addState" style="color: red"/>
+                <h:outputLabel for="zip" value="Zip"/>
+                <h:inputText class="form-control" id="zip" value="#{addressController.address.zip}"/>
+                <h:message for="zip" style="color: red"/>
+            </h:panelGroup>-->
+
+            <h:commandButton action="#{employeesController.executeCreateEmployee()}" value="Save"/>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

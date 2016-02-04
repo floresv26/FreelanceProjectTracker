@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="user" type="edu.iit.sat.itmd4515.vflores3.fp.security.User" required="true"/>
+        <cc:attribute name="readonly" type="java.lang.Boolean" required="false" default="true"/>
+        <cc:attribute name="action" required="false" method-signature="java.lang.String action{}"/>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+
+        <h:form>
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="userName" value="User #{cc.attrs.user.userName}" />
+                <h:inputHidden id="userName" value="#{cc.attrs.user.userName}" />
+            </h:panelGroup>
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="j_userName" value="Username"/>
+                <h:inputText id="j_userName" class="form-control" value="#{cc.attrs.user.userName}"/>
+                <h:message for="j_userName" style="color: red"/>
+            </h:panelGroup>
+
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="j_password" value="Password"/>
+                <h:inputSecret id="j_password" class="form-control" value="#{cc.attrs.user.password}"/>
+                <h:message for="j_password" style="color: red"/>
+            </h:panelGroup>
+
+            <h:panelGroup layout="block" class="form-group" rendered="#{not cc.attrs.readonly}">
+                <h:outputLabel for="j_password2" value="Confirm Password" rendered="#{not cc.attrs.readonly}"/>
+                <h:inputSecret id="j_password2" class="form-control" value="#{cc.attrs.user.password2}" rendered="#{not cc.attrs.readonly}"/>
+                <h:message for="j_password2" style="color: red"/>
+            </h:panelGroup>
+
+
+
+            <h:commandButton action="#{cc.attrs.action}" value="Save" rendered="#{not cc.attrs.readonly}"/>
+        </h:form>
+
+    </cc:implementation>
+</html>

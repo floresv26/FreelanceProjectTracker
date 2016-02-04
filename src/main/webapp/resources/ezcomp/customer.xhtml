@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="customer" type="edu.iit.sat.itmd4515.vflores3.fp.domain.Customer" required="true"/>
+        <cc:attribute name="readonly" type="java.lang.Boolean" required="false" default="true"/>
+        <cc:attribute name="action" required="false" method-signature="java.lang.String action{}"/>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <h:form>
+            <h:panelGroup layout="block" class="form-group">
+                <!--<h:outputLabel for="customerId" value="Customer ID #{cc.attrs.customer.customerId}"/>-->
+                <h:inputHidden id="customerId" value="#{cc.attrs.customer.customerId}"/>
+            </h:panelGroup>
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="companyName" value="Company"/>
+                <h:inputText class="form-control" id="companyName" value="#{cc.attrs.customer.companyName}"/>
+                <h:message for="companyName" style="color: red"/>
+            </h:panelGroup>
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="custRepresentative" value="Representative"/>
+                <h:inputText class="form-control" id="custRepresentative" value="#{cc.attrs.customer.custRepresentative}"/>
+                <h:message for="custRepresentative" style="color: red"/>
+            </h:panelGroup>
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="custPhone" value="Phone"/>
+                <h:inputText class="form-control" id="custPhone" value="#{cc.attrs.customer.custPhone}"/>
+                <h:message for="custPhone" style="color: red"/>
+            </h:panelGroup>
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="custSinceDate" value="Customer Since"/>
+                <h:inputText class="form-control" id="custSinceDate" value="#{cc.attrs.customer.custSinceDate}">
+                    <f:convertDateTime type="date" dateStyle="short"/>
+                </h:inputText>
+                <h:message for="custSinceDate" style="color: red"/>
+            </h:panelGroup>
+            
+            <h:commandButton action="#{cc.attrs.action}" value="Save" rendered="#{not cc.attrs.readonly}"/>
+
+        </h:form>
+    </cc:implementation>
+</html>

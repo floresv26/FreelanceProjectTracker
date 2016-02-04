@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../WEB-INF/templates/secureTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="title">
+        <h:outputLabel value="Project Number: #{projectController.project.projectNumber}"></h:outputLabel>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="projectNumber" value="Project Number"/>
+                <h:inputText class="form-control" id="projectNumber" value="#{projectController.project.projectNumber}"/>
+            </h:panelGroup>
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="projectName" value="Project Name"/>
+                <h:inputText class="form-control" id="projectName" value="#{projectController.project.projectName}"/>
+            </h:panelGroup>
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="projStartDate" value="Date Requested"/>
+                <h:inputText class="form-control" id="projStartDate" value="#{projectController.project.projStartDate}">
+                    <f:convertDateTime type="date" dateStyle="short"/>
+                </h:inputText>
+            </h:panelGroup>
+            <c:if test="#{not empty cc.attrs.project.projEndDate}">
+                <h:panelGroup layout="block" class="form-group">
+                    <h:outputLabel for="projEndDate" value="End Date"/>
+                    <h:inputText class="form-control" id="projEndDate" value="#{projectController.project.projEndDate}">
+                        <f:convertDateTime type="date" dateStyle="short"/>
+                    </h:inputText>
+                </h:panelGroup>
+            </c:if>
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="representative" value="Representative"/>
+                <h:inputText class="form-control" id="representative" value="#{projectController.project.customer.custRepresentative}"/>
+            </h:panelGroup>
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="projectDescription" value="Description"/>
+                <h:inputText class="form-control" id="projectDescription" value="#{projectController.project.projectDescription}"/>
+            </h:panelGroup>
+            
+        </h:form>
+    </ui:define>
+
+</ui:composition>

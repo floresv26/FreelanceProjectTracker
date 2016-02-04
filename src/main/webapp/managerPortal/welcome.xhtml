@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../WEB-INF/templates/secureTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:ezcomp="http://xmlns.jcp.org/jsf/composite/ezcomp">
+
+    <ui:define name="title">
+        You are a Manager
+    </ui:define>
+
+    <ui:define name="content">
+
+        <h6>
+            <h:form><h:commandButton action="#{projectController.doCreateProject()}" value="Create Project"/></h:form>
+        </h6>
+        <h6>
+            <h:form><h:commandButton action="#{employeesController.doViewAllEmployees()}" value="View Employees"/></h:form>
+        </h6>
+        <h6>
+            <h:form><h:commandButton action="#{customerController.doViewAllCustomers()}" value="View Clients"/></h:form>
+        </h6>
+
+        <ezcomp:projects projects="#{projectController.projects}"/>
+
+    </ui:define>
+
+</ui:composition>

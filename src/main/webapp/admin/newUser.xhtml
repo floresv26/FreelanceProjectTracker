@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/templates/secureTemplate.xhtml">
+
+            <ui:define name="title">
+                Create an account
+            </ui:define>
+
+            <ui:define name="content">
+
+                <h:form>
+                    <h:panelGroup layout="block" class="form-group">
+                        <h:outputFormat value="Employee ID #{userController.empId}">
+                            <f:param value="#{userController.empId}"/>
+                        </h:outputFormat>
+                            <!--<h:outputLabel for="employeeId" value="Employee ID #{employeesController.employee.employeeId}"/>
+                            <h:inputHidden id="employeeId" value="#{employeesController.employee.employeeId}" />-->
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" class="form-group">
+                        <h:outputLabel for="j_userName" value="Username"/>
+                        <h:inputText id="j_userName" class="form-control" value="#{userController.user.userName}"/>
+                        <h:message for="j_userName" style="color: red"/>
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" class="form-group">
+                        <h:outputLabel for="j_password" value="Password"/>
+                        <h:inputSecret id="j_password" class="form-control" value="#{userController.user.password}"/>
+                        <h:message for="j_password" style="color: red"/>
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" class="form-group">
+                        <h:outputLabel for="j_password2" value="Confirm Password"/>
+                        <h:inputSecret id="j_password2" class="form-control" value="#{userController.user.password2}"/>
+                        <h:message for="j_password2" style="color: red"/>
+                    </h:panelGroup>
+
+
+
+                    <h:commandButton action="#{userController.executeCreateUser()}" value="Save"/>
+                </h:form>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

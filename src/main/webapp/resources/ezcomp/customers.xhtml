@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="customers" type="java.util.List" required="true"/>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+
+        <h:dataTable class="table table-hover table-striped" value="#{cc.attrs.customers}" var="customer">
+
+            <h:column>
+                <f:facet name="header"><h:outputText value="Company"/></f:facet>
+                <h:outputText value="#{customer.companyName}"></h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Representative"/></f:facet>
+                <h:outputText value="#{customer.custRepresentative}"></h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Phone"/></f:facet>
+                <h:outputText value="#{customer.custPhone}"></h:outputText>
+            </h:column>
+            <c:if test="#{loginController.admin}">
+                <h:column>
+                    <f:facet name="header"><h:outputText value="Username"/></f:facet>
+                    <h:outputText value="#{customer.user.userName}" rendered="#{not empty customer.user.userName}"></h:outputText>
+                    <h:form><h:commandLink action="#{userController.doCreateUser()}" value="Create User Account" rendered="#{empty customer.user.userName}"/></h:form>
+                </h:column>
+            </c:if>
+            <h:column>
+                <h:form><h:commandLink action="#{customerController.doViewCustomer(customer)}" value="View"/></h:form>
+            </h:column>
+            <h:column>
+                <h:form><h:commandLink action="#{customerController.doUpdateCustomer(customer)}" value="Edit"/></h:form>
+            </h:column>
+            <h:column>
+                <h:form><h:commandLink action="#{customerController.doDeleteCustomer(customer)}" value="Delete"/></h:form>
+            </h:column>
+
+        </h:dataTable>
+
+    </cc:implementation>
+</html>
