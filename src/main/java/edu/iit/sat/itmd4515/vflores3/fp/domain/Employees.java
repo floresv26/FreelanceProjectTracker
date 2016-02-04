@@ -418,7 +418,7 @@ public class Employees {
     }
 
     /**
-     * toString() method
+     * toString() method with most variables
      *
      * @return
      */
